@@ -36,6 +36,14 @@
         android:text="Convert"
         android:textSize="18sp" />
 
+            <Button
+        android:id="@+id/btnStop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Stop"
+        android:textSize="18sp" />
+
         </LinearLayout>
 
 </ScrollView>

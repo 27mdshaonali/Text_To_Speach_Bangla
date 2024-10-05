@@ -18,9 +18,10 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     TextView text;
-    Button btnConvert;
+    Button btnConvert, btnStop;
     TextToSpeech textToSpeech;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         text = findViewById(R.id.text);
         btnConvert = findViewById(R.id.btnConvert);
+        btnStop = findViewById(R.id.btnStop);
 
         textToSpeech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
@@ -58,10 +60,28 @@ public class MainActivity extends AppCompatActivity {
                 String txt = text.getText().toString();
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    textToSpeech.speak(txt, TextToSpeech.QUEUE_FLUSH, null, null);
+
+                    if (!txt.isEmpty()){
+
+                        textToSpeech.speak(txt, TextToSpeech.QUEUE_FLUSH, null, null);
+
+                    }
+
                 } else {
                     textToSpeech.speak(txt, TextToSpeech.QUEUE_FLUSH, null);
                 }
+            }
+        });
+
+
+        btnStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                textToSpeech.stop();
+
+                text.setText(getString(R.string.txt));
+
             }
         });
 
