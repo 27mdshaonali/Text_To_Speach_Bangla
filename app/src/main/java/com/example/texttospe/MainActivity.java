@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
-                    if (!txt.isEmpty()){
+                    if (!txt.isEmpty()) {
 
                         textToSpeech.speak(txt, TextToSpeech.QUEUE_FLUSH, null, null);
 
